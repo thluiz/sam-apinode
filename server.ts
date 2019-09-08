@@ -7,7 +7,7 @@ import { DependencyManager } from "./src/services/managers/dependency-manager";
 import { DataRunningConfiguration } from "./src/services/managers/data-runner";
 import { DatabaseManager } from "./src/services/managers/database-manager";
 
-if (process.env.PRODUCTION == "false") {
+if (process.env.PRODUCTION != "true") {
   // tslint:disable-next-line:no-var-requires
   require("dotenv").load();
 } else {

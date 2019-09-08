@@ -13,7 +13,7 @@ const users_repository_1 = require("./src/repositories/users-repository");
 const dependency_manager_1 = require("./src/services/managers/dependency-manager");
 const data_runner_1 = require("./src/services/managers/data-runner");
 const database_manager_1 = require("./src/services/managers/database-manager");
-if (process.env.PRODUCTION == "false") {
+if (process.env.PRODUCTION != "true") {
     // tslint:disable-next-line:no-var-requires
     require("dotenv").load();
 }
