@@ -1,0 +1,9 @@
+C:\VTGit\josi\database\Database\Database\bin\Debug\Database.dacpac
+C:\VTGit\josi\database\Database\Database\obj\Debug\Model.xml
+C:\VTGit\josi\database\Database\Database\obj\Debug\refactor.xml
+C:\VTGit\josi\database\Database\Database\obj\Debug\postdeploy.sql
+C:\VTGit\josi\database\Database\Database\obj\Debug\predeploy.sql
+C:\VTGit\josi\database\Database\Database\obj\Debug\Database.dll
+C:\VTGit\josi\database\Database\Database\obj\Debug\Database.pdb
+C:\VTGit\josi\database\Database\Database\bin\Debug\Database.dll
+C:\VTGit\josi\database\Database\Database\bin\Debug\Database.pdb

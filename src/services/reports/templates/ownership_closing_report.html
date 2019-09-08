@@ -1,0 +1,250 @@
+<html>
+<%
+        Date.prototype.formatBr = function() {
+        var yyyy = this.getFullYear();
+        var mm = this.getMonth() < 9 ? "0" + (this.getMonth() + 1) : (this.getMonth() + 1); // getMonth() is zero-based
+        var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
+        var hh = this.getHours() < 10 ? "0" + this.getHours() : this.getHours();
+        var min = this.getMinutes() < 10 ? "0" + this.getMinutes() : this.getMinutes();
+        return "".concat(yyyy).concat("-").concat(mm).concat("-").concat(dd).concat(" ").concat(hh).concat(":").concat(min);
+       };
+    %>
+<style>
+    p {
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
+<body style="font-family:Arial, Helvetica, sans-serif">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td width="50"><b>Titular:</b></td>
+            <td colspan=3>
+                <%= data.person %>
+            </td>
+        </tr>
+        <tr>
+            <td><b>Início:</b></td>
+            <td width="50">
+                <%= data.started_on_hour %>
+            </td>
+            <td width="50"><b>Fim:</b></td>
+            <td width="*">
+                <%= data.closed_on_hour %>
+            </td>
+        </tr>
+        <% if(data.description) { %>
+        <tr>
+            <td colspan="4">
+                <%- data.description %>
+                <br />
+            </td>
+        </tr>
+        <% } %>
+        <% if(data.close_text) { %>
+        <tr>
+            <td colspan="4">
+                <%- data.close_text %>
+                <br />
+            </td>
+        </tr>
+        <% } %>
+        <% if(data.comments) { %>
+        <tr>
+            <td colspan="4">
+                <table border="1" cellpadding="5" cellspacing="0" style="border-color: #eeeeee" width="100%">
+                    <tr style="background-color: #AAA; color:white;font-weight:bold">
+                        <td colspan="6" align="center">
+                            Comentários
+                        </td>
+                    </tr>
+                    <% data.comments.forEach(function(i, index) { %>
+                    <tr>
+                        <td>
+                            <%- i.comment.replace(/(?:\\[rn]|[\r\n]+)+/g, "<br />") %>
+                            <div style="text-align: left;padding-left:30px">
+                                <i>
+                                    <%- i.responsible %> -
+                                    <%- new Date(i.created_at).formatBr() %></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }); %>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+            </td>
+        </tr>
+        <% } %>
+        <tr>
+            <td colspan="4">
+                <table border="1" cellpadding="5" cellspacing="0" style="border-color: #eeeeee" width="100%">
+                    <tr style="background-color: #AAA; color:white;font-weight:bold">
+                        <td colspan="6" align="center">
+                            Ações
+                        </td>
+                    </tr>
+                    <% if(data.actions) {
+                        data.actions.forEach(function(i) { %>
+                    <tr>
+                        <td>
+                            <h4 style="margin:0;padding:0">
+                                <%- i.title %>
+                            </h4>
+                            <% if(i.description) { %>
+                            <div style="padding-left:10px">
+                                <%- i.description.replace(/(?:\\[rn]|[\r\n]+)+/g, "<br />") %>
+                            </div>
+                            <% } %>
+                            <% if(i.comments) { %>
+                            <h5 style="margin:0;padding:0;padding-left:10px">Comentários</h5>
+                            <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                                <% i.comments.forEach(function(c) { %>
+                                <tr>
+                                    <td style="padding-left:30px">
+                                        <%- c.created_by_name %> (<%- new Date(c.created_at).formatBr() %>):
+                                        <%- c.comment.replace(/(?:\\[rn]|[\r\n]+)+/g, "<br />") %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </table>
+                            <% } %>
+                            <div style="margin:0;padding:0;padding-left:10px">
+                                <% if(i.completed) { %>
+                                Completada por
+                                <%- i.completed_by_name %>
+                                em
+                                <%- new Date(i.completed_at).formatBr() %>
+                                <% } %>
+                                <% if(!i.completed) { %>
+                                Tratada por
+                                <%- i.treated_by_name %>
+                                <div>
+                                    <% if(i.treated_until) { %>
+                                    Aguardando até
+                                    <%- new Date(i.treated_until).formatBr() %>
+                                    <% } else { %>
+                                    Aguardando até próxima titularidade
+                                    <% } %>
+                                </div>
+                                <% } %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% });
+                } else {
+                        %>
+                        <tr>
+                            <td>
+                            Nenhuma ação informada
+                            </td>
+                        </tr>
+                <% } %>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding-top:20px">
+                <table border="1" cellpadding="5" cellspacing="0" style="border-color: #eeeeee" width="100%">
+                    <tr style="background-color: #AAA; color:white;font-weight:bold">
+                        <td colspan="6" align="center">
+                            Atividades
+                        </td>
+                    </tr>
+                    <tr style="background-color: #AAA; color:white;">
+                        <td width="50" align="center">Prev.</td>
+                        <td width="50" align="center">Início</td>
+                        <td width="50" align="center">Fim</td>
+                        <td width="40" align="center">Tipo</td>
+                        <td width="200">Pessoa</td>
+                        <td width="*">Detalhes</td>
+                    </tr>
+                    <% if(data.incidents) {
+                        data.incidents.forEach(function(i, index) { %>
+                    <tr style="background-color: <%= index % 2 ? 'white' : '#efefef' %> ">
+                        <td valign="top" align="center">
+                            <%= i.small_date %>
+                        </td>
+                        <td valign="top" align="center">
+                            <%= i.started_on_hour || i.start_hour %>
+                        </td>
+                        <td valign="top" align="center">
+                            <%= i.closed_on_hour %>
+                        </td>
+                        <td valign="top" align="center">
+                            <%= i.abrev %>
+                        </td>
+                        <td valign="top">
+                            <%= i.person %>
+                        </td>
+                        <td valign="top">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <% if(i.title) { %>
+                                        <%= i.title %>
+                                        <% } %>
+                                        <% if(i.value) { %>
+                                        :
+                                        <%= i.value %>
+                                        <% } %>
+                                        <% if(i.payment_method) { %>
+                                        -
+                                        <%= i.payment_method %>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                                <% if(i.description) { %>
+                                <tr>
+                                    <td style="padding-bottom:20px;">
+                                        <b>Descrição: </b>
+                                        <%- i.description %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                <% if(i.close_text) { %>
+                                <tr>
+                                    <td style="padding-bottom:20px;">
+                                        <b>Fechamento: </b>:
+                                        <%- i.close_text %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                <% if(i.responsible_name || i.closed_by) { %>
+                                <tr>
+                                    <td>
+                                        <table border="0" cellpadding="0" cellspacing="0" style="font-size: smaller;">
+                                            <tr>
+                                                <% if(i.responsible_name) { %>
+                                                <td style="padding-right:20px">
+                                                    <b>Registro: </b>
+                                                    <%= i.responsible_name %>
+                                                </td>
+                                                <% } %>
+                                                <% if(i.closed_by) { %>
+                                                <td>
+                                                    <b>Fechado por: </b>
+                                                    <%= i.closed_by %>
+                                                </td>
+                                                <% } %>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </table>
+                        </td>
+                    </tr>
+                    <% });
+                 } %>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
