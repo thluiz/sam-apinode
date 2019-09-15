@@ -16,6 +16,10 @@ if (process.env.PRODUCTION != "true") {
   appInsights.start();
 }
 
+for (var i in process.env) {
+  console.log(`${i}=${process.env[i]}`);
+}
+
 import "reflect-metadata";
 import { ErrorCode } from "./src/helpers/errors-codes";
 
