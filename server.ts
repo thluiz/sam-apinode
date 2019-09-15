@@ -11,7 +11,7 @@ if (process.env.PRODUCTION != "true") {
   // tslint:disable-next-line:no-var-requires
   require("dotenv").load();
 } else {
-  require('dotenv').config({ path: '/home/thluiz/webapps/api_node/.env' });
+  require('dotenv').config({ path: process.env.CONFIG_FILE });
   appInsights.setup(process.env.AZURE_APP_INSIGHTS);
   appInsights.start();
 }

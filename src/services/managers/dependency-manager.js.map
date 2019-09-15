@@ -1,1 +1,1 @@
-{"version":3,"file":"dependency-manager.js","sourceRoot":"","sources":["dependency-manager.ts"],"names":[],"mappings":";;AAAA,yCAAsC;AAEtC,MAAM,SAAS,GAAG,IAAI,qBAAS,EAAE,CAAC;AAElC;IACI,MAAM,KAAK,SAAS;QAChB,OAAO,SAAS,CAAC;IACrB,CAAC;CACJ;AAJD,8CAIC"}
+{"version":3,"file":"dependency-manager.js","sourceRoot":"","sources":["dependency-manager.ts"],"names":[],"mappings":";;AAAA,yCAAsC;AAEtC,MAAM,SAAS,GAAG,IAAI,qBAAS,EAAE,CAAC;AAElC,MAAa,iBAAiB;IAC1B,MAAM,KAAK,SAAS;QAChB,OAAO,SAAS,CAAC;IACrB,CAAC;CACJ;AAJD,8CAIC"}

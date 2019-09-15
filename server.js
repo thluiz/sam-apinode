@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -18,7 +19,7 @@ if (process.env.PRODUCTION != "true") {
     require("dotenv").load();
 }
 else {
-    require('dotenv').config({ path: '/home/thluiz/webapps/api_node/.env' });
+    require('dotenv').config({ path: process.env.CONFIG_FILE });
     appInsights.setup(process.env.AZURE_APP_INSIGHTS);
     appInsights.start();
 }
@@ -79,7 +80,7 @@ app.get(/^((?!\.).)*$/, (req, res) => {
     res.sendfile(path, { root: "./apex/public" });
 });
 app.use(express.static("./apex/public"));
-app.listen(port, () => __awaiter(this, void 0, void 0, function* () {
+app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env.PRODUCTION == "false") {
         yield WarmUserCaches();
     }
