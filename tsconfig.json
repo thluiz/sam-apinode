@@ -2,14 +2,15 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "watch": true,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
-    "node_modules",    
+    "node_modules",
     "apex",
     "**/*.spec.ts"
   ]
