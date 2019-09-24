@@ -23,6 +23,9 @@ else {
     appInsights.setup(process.env.AZURE_APP_INSIGHTS);
     appInsights.start();
 }
+for (var i in process.env) {
+    console.log(`${i}=${process.env[i]}`);
+}
 require("reflect-metadata");
 const errors_codes_1 = require("./src/helpers/errors-codes");
 const old_routes = require("./src/initializers/old-routes");
@@ -76,10 +79,8 @@ passport.initialize(app);
 old_routes.initialize(app);
 routes.initialize(app, "./src/routes");
 app.get(/^((?!\.).)*$/, (req, res) => {
-    const path = "index.html";
-    res.sendfile(path, { root: "./apex/public" });
+    res.redirect("https://site.myvtmi.im");
 });
-app.use(express.static("./apex/public"));
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env.PRODUCTION == "false") {
         yield WarmUserCaches();

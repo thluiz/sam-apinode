@@ -87,11 +87,8 @@ old_routes.initialize(app);
 routes.initialize(app, "./src/routes");
 
 app.get(/^((?!\.).)*$/, (req, res) => {
-  const path = "index.html";
-  res.sendfile(path, { root: "./apex/public" });
+  res.redirect("https://site.myvtmi.im")
 });
-
-app.use(express.static("./apex/public"));
 
 app.listen(port, async () => {
   if (process.env.PRODUCTION == "false") {
