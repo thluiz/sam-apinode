@@ -9,7 +9,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var Incident_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 const Branch_1 = require("./Branch");
 const Card_1 = require("./Card");
@@ -199,4 +198,5 @@ Incident = Incident_1 = __decorate([
     typeorm_1.Entity()
 ], Incident);
 exports.Incident = Incident;
+var Incident_1;
 //# sourceMappingURL=Incident.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"old-routes.js","sourceRoot":"","sources":["old-routes.ts"],"names":[],"mappings":";;AAAA,6BAA6B;AAE7B,SAAgB,UAAU,CAAC,GAAG;IAC1B,MAAM,YAAY,GAAG,GAAG,CAAC,UAAU,EAAE,CAAC;IAEtC,GAAG,CAAC,IAAI,CAAC,eAAe,EAAE,YAAY,CAAC,MAAM,EAAE,CAAC,CAAC;AACrD,CAAC;AAJD,gCAIC"}
+{"version":3,"file":"old-routes.js","sourceRoot":"","sources":["old-routes.ts"],"names":[],"mappings":";;AAAA,6BAA6B;AAE7B,oBAA2B,GAAG;IAC1B,MAAM,YAAY,GAAG,GAAG,CAAC,UAAU,EAAE,CAAC;IAEtC,GAAG,CAAC,IAAI,CAAC,eAAe,EAAE,YAAY,CAAC,MAAM,EAAE,CAAC,CAAC;AACrD,CAAC;AAJD,gCAIC"}
