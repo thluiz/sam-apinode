@@ -34,7 +34,7 @@
       "@types/ejs": "^2.6.0",
       "applicationinsights": "^1.0.2",
       "await-to-js": "^2.0.1",
-      "axios": "^0.18.0",
+      "axios": "^0.21.1",
       "azure-storage": "^2.8.2",
       "body-parser": "^1.18.2",
       "botbuilder": "^3.12.0",
